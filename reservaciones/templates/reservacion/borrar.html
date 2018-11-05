@@ -1,0 +1,11 @@
+{% extends 'reservacion/ver.html' %}
+
+{% block content %}
+    {% for post in draft %}
+        <div class="post">
+            <p class="date">created: {{ post.fecha_creacion|date:'d-m-Y' }}</p>
+            <h1><a href="{% url 'detalle' pk=post.pk %}">{{ post.habitacion }}</a></h1>
+            <p>{{ post.huesped|truncatechars:200 }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'reservacion/base.html' %}
+
+{% block content %}
+{% for post in pub %}
+
+        <div class="post">
+            <div class="date">
+                
+            </div>
+            <h1><a href="{% url 'home' %}">{{ post.habitacion }}</a></h1>
+            <p>{{ post.huesped|linebreaksbr }}</p>
+        </div>
+{% endfor %}
+{% endblock %}

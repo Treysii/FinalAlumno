@@ -1,0 +1,13 @@
+{% extends 'reservacion/ver.html' %}
+
+{% block content %}
+{% for post in pubs %}
+        <div class="post">
+            <div class="date">
+
+            </div>
+            <h1><a href="{% url 'editar' %}" >{{ post.habitacion }}</a></h1>
+            <p>{{ post.huesped|linebreaksbr }}</p>
+        </div>
+{% endfor %}
+{% endblock %}
