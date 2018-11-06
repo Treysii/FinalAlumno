@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^ver/$', views.verlo,name='verlo'),
     url(r'^edit/$', views.editar, name='editar'),
     url(r'^borrador/$', views.borrador, name='borrador'),
+    url(r'^habitacion/$', views.habitacion_nueva, name='habitacion_nueva'),
     ]

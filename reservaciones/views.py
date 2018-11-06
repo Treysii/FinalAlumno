@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib import messages
 from django.utils import timezone
 from .forms import ReservacionForm
+from .forms import HabitacionForm
 from reservaciones.models import Huesped, Reserva, Habitacion
 from django.contrib.auth.decorators import login_required
 
@@ -54,6 +55,23 @@ def editar(request):
 def borrador(request):
     draft = Reserva.objects.filter(fecha_publicacion__isnull=True).order_by('fecha_publicacion')
     return render(request, 'reservacion/borrador.html', {'draft': draft})
-#def lista(request):
-    #hab =Habitacion.objects.filter(fecha__lte=timezone.now())
-    #return render(request, 'reservacion/listar.html', {'hab': hab})
+
+
+
+
+def habitacion_nueva(request):
+        if request.method == "POST":
+            form = HabitacionForm(request.POST)
+            if form.is_valid():
+                precio = form.save()
+                piso = form.save()
+                maxpersonas = form.save()
+                camabb = form.save()
+                bano = form.save()
+                balcon = form.save()
+                fecha = form.save()
+                
+                messages.add_message(request, messages.SUCCESS, 'Reservacion Guardado Correctamente')
+        else:
+            form = HabitacionForm()
+        return render(request, 'reservacion/habitacion_nuevo.html', {'form': form})
