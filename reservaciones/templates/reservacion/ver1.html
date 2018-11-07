@@ -9,7 +9,7 @@
             <th scope="col">Apellido</th>
             <th scope="col">Telefono</th>
             <th scope="col">Direccion</th>
-            <th scope="col">Fecha</th>
+
           </tr>
         </thead>
         <tbody>
@@ -19,12 +19,12 @@
             <th>{{huesped.apellido}}</th>
             <th>{{huesped.telefono}}</th>
             <th>{{huesped.direccion}}</th>
-            <th>{{huesped.fechaH}}</th>
+
 
             <th>
-              <a href="{% url 'huesped_editar' pk=huesped.pk %}" class="bt btn-warning"><span class="glyphicon glyphicon-info-sign"></span>Actualizar</a>
-              <a href="{% url 'huesped_detalle' pk=huesped.pk %}" class="bt btn-warning"><span class="glyphicon glyphicon-info-sign"></span>Detalle</a>
-              <a href="{% url 'huesped_eliminar' pk=huesped.pk %}" class="bt btn-warning"><span class="glyphicon glyphicon-info-sign"></span>ELiminar</a>
+              <a href="{% url 'huesped_editar' pk=huesped.pk %}" class="bt  btn-primary"><span class="glyphicon glyphicon-info-sign"></span>Actualizar</a>
+              <a href="{% url 'huesped_detalle' pk=huesped.pk %}" class="bt  btn-primary"><span class="glyphicon glyphicon-info-sign"></span>Detalle</a>
+<a href="{% url 'huesped_eliminar' pk=huesped.pk %}" class="bt  btn-primary"><span class="glyphicon glyphicon-info-sign"></span>Elimnar</a>
             </th>
           </tr>
           {% endfor %}

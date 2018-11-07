@@ -25,9 +25,9 @@
             <th>{{hab.balcon}}</th>
             <th>{{hab.fecha}}</th>
             <th>
-                <a href="{% url 'habitacion_detalle' pk=hab.pk %}" class="bt btn-warning"><span class="glyphicon glyphicon-info-sign"></span>Detalle</a>
-                <a href="{% url 'habitacion_editar' pk=hab.pk %}" class="bt btn-warning"><span class="glyphicon glyphicon-info-sign"></span>Detalle</a>
-                <a href="{% url 'habitacion_eliminar' pk=hab.pk %}" class="bt btn-warning"><span class="glyphicon glyphicon-info-sign"></span>Detalle</a>
+                <a href="{% url 'habitacion_editar' pk=hab.pk %}" class="bt btn-primary"><span class="glyphicon glyphicon-info-sign"></span>Actualizar</a>
+                <a href="{% url 'habitacion_detalle' pk=hab.pk %}" class="bt btn-primary"><span class="glyphicon glyphicon-info-sign"></span>Detalle</a>
+                <a href="{% url 'habitacion_eliminar' pk=hab.pk %}" class="bt btn-primary"><span class="glyphicon glyphicon-info-sign"></span>Eliminar</a>
               </th>
           </tr>
           {% endfor %}

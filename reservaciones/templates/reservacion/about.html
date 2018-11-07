@@ -28,6 +28,12 @@
     <h1 class="site-heading text-center text-white d-none d-lg-block">
       <span class="site-heading-upper text-primary mb-3">Lo mejor que te podemos brindar</span>
       <span class="site-heading-lower">T.S</span>
+      {% if user.is_authenticated %}
+
+        <p class="top-menu">Hola {{ user.username }} <small>(<a href="{% url 'logout' %}">Cerrar Sesion</a>)</small></p>
+      {% else %}
+        <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
+      {% endif %}
     </h1>
 
 
@@ -50,10 +56,7 @@
           </li>
           <li class="nav-item active px-lg-4">
             <a class="nav-link text-uppercase text-expanded" href="{% url 'lista_habitacion'%}">Lista Habitacion</a>
-          </li>
-          <li class="nav-item active px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="{% url 'habitacion_nueva' %}">Habitacion</a>
-          </li>
+
           <li class="nav-item px-lg-4">
             <a class="nav-link text-uppercase text-expanded" href="{% url 'store' %}">Ofrecemos</a>
           </li>

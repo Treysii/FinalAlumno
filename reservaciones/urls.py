@@ -19,9 +19,9 @@ urlpatterns = [
     url(r'^borrar/(?P<pk>\d+)/remove/$', views.habitacion_eliminar, name='habitacion_eliminar'),
 
 
-    #url(r'^hu/$', views.lista_huesped, name ='lista_huesped'),
+    url(r'^hu/$', views.lista_huesped, name ='lista_huesped'),
     url(r'^reservacion/nuevo/$', views.reservacion_nueva, name='reservacion_nueva'),
     url(r'^huesped/(?P<pk>[0-9]+)/edit/$', views.huesped_editar, name='huesped_editar'),
     url(r'^detalles/(?P<pk>[0-9]+)/$', views.huesped_detalle, name='huesped_detalle'),
-    url(r'^borrar/(?P<pk>\d+)/remove/$', views.huesped_eliminar, name='huesped_eliminar'),
+    url(r'^b/(?P<pk>\d+)/r/$', views.huesped_eliminar, name='huesped_eliminar'),
     ]

@@ -23,7 +23,7 @@ def home(request):
 def ver(request):
     return render(request, 'reservacion/ver.html')
 
-
+@login_required
 def habitacion_nueva(request):
     if request.method == "POST":
         form = HabitacionForm(request.POST)
@@ -35,6 +35,7 @@ def habitacion_nueva(request):
         form = HabitacionForm()
     return render(request, 'reservacion/habitacion_nuevo.html', {'form': form})
 
+@login_required
 def lista_habitacion(request):
     habitacion = Habitacion.objects.order_by('id')
     return render(request, 'reservacion/listahab.html', {'habitacion':habitacion})
@@ -42,12 +43,12 @@ def lista_habitacion(request):
 
 
 
-
+@login_required
 def habitacion_detalle(request, pk):
     habitaciones = get_object_or_404(Habitacion, pk=pk)
     return render(request, 'reservacion/detallehab.html', {'habitaciones': habitaciones})
 
-
+@login_required
 def habitacion_editar(request, pk):
     habb = get_object_or_404(Habitacion, pk=pk)
     if request.method == "POST":
@@ -77,8 +78,9 @@ def reservacion_nueva(request):
             messages.add_message(request, messages.SUCCESS, 'Reservacion Guardado Correctamente')
     else:
         formulario = ReservacionForm()
-    return render(request, 'reservacion/hues_nuevo.html', {'formulario': formulario})
+    return render(request, 'reservacion/huesped_nuevo.html', {'formulario': formulario})
 
+@login_required
 def huesped_editar(request, pk):
     huesped = get_object_or_404(Huesped, pk=pk)
     if request.method == "POST":
@@ -91,14 +93,17 @@ def huesped_editar(request, pk):
         form = ReservacionForm(instance=huesped)
     return render(request, 'reservacion/huesped_editar.html', {'form': form})
 
+@login_required
 def lista_huesped(request):
     huespeds  = Huesped.objects.order_by('fechaH')
     return render(request, 'reservacion/ver1.html', {'huespeds':huespeds})
 
+@login_required
 def huesped_detalle(request, pk):
     huespedes = get_object_or_404(Huesped, pk=pk)
     return render(request, 'reservacion/detallehues.html', {'huespedes': huespedes})
 
+@login_required
 def huesped_eliminar(request, pk):
     huesped = get_object_or_404(Huesped, pk=pk)
     huesped.delete()
