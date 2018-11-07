@@ -1,0 +1,38 @@
+{% extends 'reservacion/habitacion.html' %}
+{% block content %}
+<div class="container">
+  <h1>Lista de Habitaciones </h1>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Precio</th>
+            <th scope="col">Piso</th>
+            <th scope="col">Max Persona</th>
+            <th scope="col">Cama de Bebe</th>
+            <th scope="col">Bano</th>
+            <th scope="col">Balcon</th>
+            <th scope="col">Fecha</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for hab in habitacion %}
+          <tr class="table-active">
+            <th>{{hab.precio}}</th>
+            <th>{{hab.piso}}</th>
+            <th>{{hab.maxpersonas}}</th>
+            <th>{{hab.camabb}}</th>
+            <th>{{hab.bano}}</th>
+            <th>{{hab.balcon}}</th>
+            <th>{{hab.fecha}}</th>
+            <th>
+                <a href="{% url 'habitacion_detalle' pk=hab.pk %}" class="bt btn-warning"><span class="glyphicon glyphicon-info-sign"></span>Detalle</a>
+                <a href="{% url 'habitacion_editar' pk=hab.pk %}" class="bt btn-warning"><span class="glyphicon glyphicon-info-sign"></span>Detalle</a>
+                <a href="{% url 'habitacion_eliminar' pk=hab.pk %}" class="bt btn-warning"><span class="glyphicon glyphicon-info-sign"></span>Detalle</a>
+              </th>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+</div>
+
+{% endblock %}

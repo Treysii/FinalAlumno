@@ -5,7 +5,7 @@ class ReservacionForm(forms.ModelForm):
 
     class Meta:
         model = Huesped
-        fields = ('nombre', 'apellido', 'telefono', 'direccion', 'habitaciones')
+        fields = ('nombre', 'apellido', 'telefono', 'direccion', 'fechaH','habitaciones')
 
 
 def __init__ (self, *args, **kwargs):

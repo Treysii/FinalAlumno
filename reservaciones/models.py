@@ -15,22 +15,13 @@ class Habitacion(models.Model):
     def __str__(self):
         return self.maxpersonas
 
-    def publish(self):
-        self.fecha_publicacion = timezone.now()
-        self.save()
-
 class Huesped(models.Model):
     nombre = models.CharField(max_length=60)
     apellido = models.CharField(max_length=30)
     telefono = models.CharField(max_length=8)
     direccion = models.CharField(max_length=50)
-    fecha_publicacion = models.DateTimeField(
-                blank=True, null=True)
+    fechaH = models.DateField()
     habitaciones = models.ManyToManyField(Habitacion, through='Reserva')
-
-    def publish(self):
-        self.fecha_publicacion = timezone.now()
-        self.save()
 
     def __str__(self):
         return self.nombre
@@ -43,6 +34,7 @@ class Reserva (models.Model):
     def publish(self):
         self.fecha_publicacions = timezone.now()
         self.save()
+
 class ReservaInLine(admin.TabularInline):
     model = Reserva
     extra = 1

@@ -1,0 +1,16 @@
+{% extends 'reservacion/ver.html' %}
+
+{% block content %}
+    <h1 class="text-success">Precio:</h1>
+    <h2 class="text-info">{{habitaciones.precio}}</h2>
+    <h1 class="text-success">Piso:</h1>
+    <h2 class="text-info">{{habitaciones.piso}}</h2>
+    <h1 class="text-success">Maximos Personas:</h1>
+    <h2 class="text-info">{{habitaciones.maxpersonas}}</h2>
+    <h1 class="text-success">Cama de bebe:</h1>
+    <h2 class="text-info">{{habitaciones.camabb}}</h2>
+    <h1 class="text-success">Nombre:</h1>
+    <h2 class="text-info">{{habitaciones.balcon}}</h2>
+    <h1 class="text-success">Fecha:</h1>
+    <h2 class="text-info">{{habitaciones.fecha}}</h2>
+{% endblock %}
