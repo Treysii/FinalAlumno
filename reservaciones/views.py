@@ -69,34 +69,34 @@ def materia_eliminar(request, pk):
 @login_required
 def asignacion_nueva(request):
     if request.method == "POST":
-        formulario = ReservacionForm(request.POST)
+        formulario = AsignacionForm(request.POST)
         if formulario.is_valid():
-            huesped = Huesped.objects.create(nombre=formulario.cleaned_data['nombre'], apellido = formulario.cleaned_data['apellido'], telefono= formulario.cleaned_data['telefono'], direccion = formulario.cleaned_data['direccion'], fechaH = formulario.cleaned_data['fechaH'])
-            for habitacion_id in request.POST.getlist('habitaciones'):
-                reservas = Reserva(habitacion_id=habitacion_id, huesped_id = huesped.id)
-                reservas.save()
-            messages.add_message(request, messages.SUCCESS, 'Reservacion Guardado Correctamente')
+            grado = Grado.objects.create(nombre=formulario.cleaned_data['nombre'], seccion = formulario.cleaned_data['seccion'], fechaH = formulario.cleaned_data['fechaH'])
+            for materia_id in request.POST.getlist('materias'):
+                grados = Reserva(materia_id=materia_id, huesped_id = grado.id)
+                grados.save()
+            messages.add_message(request, messages.SUCCESS, 'Asignacion Guardado Correctamente')
     else:
-        formulario = ReservacionForm()
+        formulario = AsignacionForm()
     return render(request, 'reservacion/huesped_nuevo.html', {'formulario': formulario})
 
 @login_required
-def huesped_editar(request, pk):
-    huesped = get_object_or_404(Huesped, pk=pk)
+def grado_editar(request, pk):
+    grado = get_object_or_404(Grado, pk=pk)
     if request.method == "POST":
-        form = ReservacionForm(request.POST, instance=huesped)
+        form = AsignacionForm(request.POST, instance=grado)
         if form.is_valid():
-            huesped = form.save(commit=False)
-            huesped.save()
+            grado = form.save(commit=False)
+            grado.save()
             return redirect('lista_huesped')
     else:
-        form = ReservacionForm(instance=huesped)
+        form = AsignacionForm(instance=huesped)
     return render(request, 'reservacion/huesped_editar.html', {'form': form})
 
 @login_required
-def lista_huesped(request):
-    huespeds  = Huesped.objects.order_by('fechaH')
-    return render(request, 'reservacion/ver1.html', {'huespeds':huespeds})
+def lista_grado(request):
+    grados  = Grado.objects.order_by('fechaH')
+    return render(request, 'reservacion/ver1.html', {'grados':grados})
 
 @login_required
 def huesped_detalle(request, pk):

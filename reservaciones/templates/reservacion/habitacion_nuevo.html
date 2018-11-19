@@ -1,7 +1,7 @@
 {% extends 'reservacion/about.html' %}
 
 {% block content %}
-    <h1>HABITACION</h1>
+    <h1>Materia</h1>
     <form method="POST" class="post-form">{% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="save btn btn-default">GUARDAR</button>

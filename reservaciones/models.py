@@ -4,7 +4,7 @@ from django.utils import timezone
 # Create your models here.
 
 class Materia(models.Model):
-    nombre = models.CharField()
+    nombre = models.CharField(max_length=30)
     creditos = models.IntegerField()
     fecha = models.DateTimeField(blank=True, null=True)
 
@@ -12,8 +12,8 @@ class Materia(models.Model):
         return self.nombre
 
 class Grado(models.Model):
-    nombre = models.CharField()
-    seccion = models.CharField()
+    nombre = models.CharField(max_length=30)
+    seccion = models.CharField(max_length=30)
     fechaH = models.DateField()
     materias = models.ManyToManyField(Materia, through='Asignacion')
 

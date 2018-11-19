@@ -1,24 +1,20 @@
 {% extends 'reservacion/ver.html' %}
 {% block content %}
 <div class="container">
-  <h1>Lista de Huesped</h1>
+  <h1>Lista de grado</h1>
       <table class="table table-hover">
         <thead>
           <tr>
             <th scope="col">Nombre</th>
-            <th scope="col">Apellido</th>
-            <th scope="col">Telefono</th>
-            <th scope="col">Direccion</th>
+            <th scope="col">Seccion</th>
 
           </tr>
         </thead>
         <tbody>
-          {% for huesped in huespeds  %}
+          {% for huesped in grados  %}
           <tr class="table-active">
             <th>{{huesped.nombre}}</th>
-            <th>{{huesped.apellido}}</th>
-            <th>{{huesped.telefono}}</th>
-            <th>{{huesped.direccion}}</th>
+            <th>{{huesped.seccion}}</th>
 
 
             <th>

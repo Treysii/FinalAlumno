@@ -10,18 +10,18 @@ urlpatterns = [
 
 
 
-    url(r'^habitacion/$', views.habitacion_nueva, name='habitacion_nueva'),
+    url(r'^habitacion/$', views.materia_nueva, name='materia_nueva'),
 
 
-    url(r'^habitac/$', views.lista_habitacion, name ='lista_habitacion'),
-    url(r'^detalles/(?P<pk>[0-9]+)/$', views.habitacion_detalle, name='habitacion_detalle'),
-    url(r'^edit/(?P<pk>[0-9]+)/edit/$', views.habitacion_editar, name='habitacion_editar'),
-    url(r'^borrar/(?P<pk>\d+)/remove/$', views.habitacion_eliminar, name='habitacion_eliminar'),
+    url(r'^habitac/$', views.lista_materia, name ='lista_materia'),
+    url(r'^detalles/(?P<pk>[0-9]+)/$', views.materia_detalle, name='materia_detalle'),
+    url(r'^edit/(?P<pk>[0-9]+)/edit/$', views.materia_editar, name='materia_editar'),
+    url(r'^borrar/(?P<pk>\d+)/remove/$', views.materia_eliminar, name='materia_eliminar'),
 
 
-    url(r'^hu/$', views.lista_huesped, name ='lista_huesped'),
-    url(r'^reservacion/nuevo/$', views.reservacion_nueva, name='reservacion_nueva'),
-    url(r'^huesped/(?P<pk>[0-9]+)/edit/$', views.huesped_editar, name='huesped_editar'),
-    url(r'^detalles/(?P<pk>[0-9]+)/$', views.huesped_detalle, name='huesped_detalle'),
-    url(r'^b/(?P<pk>\d+)/r/$', views.huesped_eliminar, name='huesped_eliminar'),
+    url(r'^hu/$', views.lista_grado, name ='lista_grado'),
+    url(r'^reservacion/nuevo/$', views.asignacion_nueva, name='asignacion_nueva'),
+    url(r'^huesped/(?P<pk>[0-9]+)/edit/$', views.grado_editar, name='grado_editar'),
+    #url(r'^detalles/(?P<pk>[0-9]+)/$', views.grado_detalle, name='grado_detalle'),
+    #url(r'^b/(?P<pk>\d+)/r/$', views.grado_eliminar, name='grado_eliminar'),
     ]
