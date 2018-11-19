@@ -1,16 +1,16 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.utils import timezone
-from .forms import ReservacionForm
-from .forms import HabitacionForm
+from .forms import AsignacionForm
+from .forms import MateriaForm
 from django.urls import reverse
-from reservaciones.models import Huesped, Reserva, Habitacion
+from reservaciones.models import Materia,Grado,Asignacion
 from django.contrib.auth.decorators import login_required
 
 
 
 def lista(request):
-    pub =Reserva.objects.filter(fecha_publicacions__lte=timezone.now())
+    pub =Asignacion.objects.filter(fecha_publicacions__lte=timezone.now())
     return render(request, 'reservacion/listar.html', {'pub': pub})
 
 
@@ -24,7 +24,7 @@ def ver(request):
     return render(request, 'reservacion/ver.html')
 
 @login_required
-def habitacion_nueva(request):
+def materia_nueva(request):
     if request.method == "POST":
         form = HabitacionForm(request.POST)
         if form.is_valid():
@@ -32,42 +32,42 @@ def habitacion_nueva(request):
             hab.save()
             return redirect('lista_habitacion')
     else:
-        form = HabitacionForm()
+        form = MateriaForm()
     return render(request, 'reservacion/habitacion_nuevo.html', {'form': form})
 
 @login_required
-def lista_habitacion(request):
-    habitacion = Habitacion.objects.order_by('id')
+def lista_materia(request):
+    materia = Materia.objects.order_by('id')
     return render(request, 'reservacion/listahab.html', {'habitacion':habitacion})
 
 
 
 
 @login_required
-def habitacion_detalle(request, pk):
-    habitaciones = get_object_or_404(Habitacion, pk=pk)
+def materia_detalle(request, pk):
+    materias = get_object_or_404(Materia, pk=pk)
     return render(request, 'reservacion/detallehab.html', {'habitaciones': habitaciones})
 
 @login_required
-def habitacion_editar(request, pk):
-    habb = get_object_or_404(Habitacion, pk=pk)
+def materia_editar(request, pk):
+    habb = get_object_or_404(Materia, pk=pk)
     if request.method == "POST":
-        form = HabitacionForm(request.POST, instance=habb)
+        form = MateriaForm(request.POST, instance=habb)
         if form.is_valid():
             habb = form.save(commit=False)
             habb.save()
             return redirect('lista_habitacion')
     else:
-        form = HabitacionForm(instance=habb)
+        form = MateriaForm(instance=habb)
     return render(request, 'reservacion/editarhab.html', {'form': form})
 
-def habitacion_eliminar(request, pk):
-    habit = get_object_or_404(Habitacion, pk=pk)
+def materia_eliminar(request, pk):
+    habit = get_object_or_404(Materia, pk=pk)
     habit.delete()
     return redirect('lista_habitacion')
 
 @login_required
-def reservacion_nueva(request):
+def asignacion_nueva(request):
     if request.method == "POST":
         formulario = ReservacionForm(request.POST)
         if formulario.is_valid():

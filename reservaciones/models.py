@@ -3,44 +3,38 @@ from django.contrib import admin
 from django.utils import timezone
 # Create your models here.
 
-class Habitacion(models.Model):
-    precio = models.IntegerField()
-    piso = models.IntegerField()
-    maxpersonas = models.CharField(max_length=30)
-    camabb = models.CharField(max_length=20)
-    bano = models.CharField(max_length=15)
-    balcon = models.CharField(max_length=15)
+class Materia(models.Model):
+    nombre = models.CharField()
+    creditos = models.IntegerField()
     fecha = models.DateTimeField(blank=True, null=True)
-
-    def __str__(self):
-        return self.maxpersonas
-
-class Huesped(models.Model):
-    nombre = models.CharField(max_length=60)
-    apellido = models.CharField(max_length=30)
-    telefono = models.CharField(max_length=8)
-    direccion = models.CharField(max_length=50)
-    fechaH = models.DateField()
-    habitaciones = models.ManyToManyField(Habitacion, through='Reserva')
 
     def __str__(self):
         return self.nombre
 
-class Reserva (models.Model):
+class Grado(models.Model):
+    nombre = models.CharField()
+    seccion = models.CharField()
+    fechaH = models.DateField()
+    materias = models.ManyToManyField(Materia, through='Asignacion')
+
+    def __str__(self):
+        return self.nombre
+
+class Asignacion (models.Model):
     fecha_publicacions = models.DateTimeField(default=timezone.now)
-    habitacion = models.ForeignKey(Habitacion, on_delete=models.CASCADE)
-    huesped = models.ForeignKey(Huesped, on_delete=models.CASCADE)
+    materia = models.ForeignKey(Materia, on_delete=models.CASCADE)
+    grado = models.ForeignKey(Grado, on_delete=models.CASCADE)
 
     def publish(self):
         self.fecha_publicacions = timezone.now()
         self.save()
 
-class ReservaInLine(admin.TabularInline):
-    model = Reserva
+class AsignacionInLine(admin.TabularInline):
+    model = Asignacion
     extra = 1
 
-class HabitacionAdmin(admin.ModelAdmin):
-    inlines = (ReservaInLine,)
+class MateriaAdmin(admin.ModelAdmin):
+    inlines = (AsignacionInLine,)
 
-class HuespedAdmin(admin.ModelAdmin):
-    inlines = (ReservaInLine,)
+class GradoAdmin(admin.ModelAdmin):
+    inlines = (AsignacionInLine,)
